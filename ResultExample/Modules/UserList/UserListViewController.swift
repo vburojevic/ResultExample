@@ -29,10 +29,6 @@ final class UserListViewController: UIViewController {
         presenter.viewDidLoad()
     }
   
-    // MARK: - Public functions -
-
-    // MARK: - IBActions -
-  
     // MARK: - Private functions -
     
     private func _configureUI() {

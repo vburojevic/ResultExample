@@ -31,8 +31,6 @@ final class WithResultUserListPresenter: NSObject {
         _view = view
         _interactor = interactor
     }
-
-    // MARK: - Private functions -
     
 }
 

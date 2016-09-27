@@ -15,15 +15,13 @@ final class MainPresenter: NSObject {
     // MARK: - Private properties -
 
     private weak var _view: MainViewInterface?
-    private var _interactor: MainInteractorInterface
     private var _wireframe: MainWireframeInterface
     
     // MARK: - Lifecycle -
     
-    init (wireframe: MainWireframeInterface, view: MainViewInterface, interactor: MainInteractorInterface) {
+    init (wireframe: MainWireframeInterface, view: MainViewInterface) {
         _wireframe = wireframe
         _view = view
-        _interactor = interactor
     }
 
     // MARK: - Private functions -

@@ -34,7 +34,5 @@ final class WithoutResultUserListInteractor: NSObject, UserListInteractorInterfa
             }
         }
     }
-    
-    // MARK: - Private functions -
-    
+        
 }

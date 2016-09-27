@@ -46,8 +46,7 @@ final class MainWireframe: NSObject {
     }
     
     func configureModuleWith(viewController: MainViewController) {
-        let interactor = MainInteractor()
-        let presenter = MainPresenter(wireframe: self, view: viewController, interactor: interactor)
+        let presenter = MainPresenter(wireframe: self, view: viewController)
         viewController.presenter = presenter
     }
 

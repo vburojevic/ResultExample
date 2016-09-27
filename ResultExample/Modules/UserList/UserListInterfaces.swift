@@ -41,4 +41,5 @@ protocol UserListViewDelegateInterface: PresenterInterface {
 // MARK: - UserList Interactor Interface -
 
 protocol UserListInteractorInterface: InteractorInterface {
+    // This is ignored for this example, but shouldn't be!
 }

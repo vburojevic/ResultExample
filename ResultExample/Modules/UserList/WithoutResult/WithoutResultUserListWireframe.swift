@@ -65,12 +65,4 @@ extension WithoutResultUserListWireframe: UserListWireframeInterface {
         }
     }
 
-    func configureChildViewController(viewController: UIViewController) {
-        // #warning Incomplete implementation, remove if not needed
-        /*
-        let wireframe = <#ChildWireframe#>(navigationController: navigationController)
-        wireframe.configureModuleWith(viewController)
-        */
-    }
-
 }

@@ -35,8 +35,3 @@ protocol MainViewInterface: ViewInterface {
 protocol MainViewDelegateInterface: PresenterInterface {
     func didSelectNavigationAction(action: MainNavigationAction)
 }
-
-// MARK: - Main Interactor Interface -
-
-protocol MainInteractorInterface: InteractorInterface {
-}

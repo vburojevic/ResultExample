@@ -13,15 +13,6 @@ import Unbox
 import Result
 import enum Result.Result
 
-//extension Response {
-//    func mapArray() -> Result<[User], NetworkError> {
-//        return result
-//            .mapError { NetworkError.Alamofire($0) }
-//            .map { $0 as? [UnboxableDictionary] ?? [] }            
-//            .tryMap { try Unbox($0) as [User] }
-//    }
-//}
-
 final class WithResultUserListInteractor: NSObject, UserListInteractorInterface {
     
     // MARK: - Public functions -
@@ -38,7 +29,5 @@ final class WithResultUserListInteractor: NSObject, UserListInteractorInterface 
             resultHandler(result)
         }
     }
-    
-    // MARK: - Private functions -
     
 }
