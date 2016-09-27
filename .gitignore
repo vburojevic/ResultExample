@@ -25,8 +25,8 @@ build/
 *.dep
 
 # Cocoapods
-Pods
-Carthage
+# Pods
+# Carthage
 
 # AppCode specific files
 .idea/
