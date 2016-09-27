@@ -18,24 +18,18 @@ final class WithResultUserListInteractor: NSObject, UserListInteractorInterface 
     // MARK: - Public functions -
     
     func loadUsers(withResultHandler resultHandler: (Result<[User], NetworkError>) -> ()) {
-        Alamofire.request(Router.Users.URLRequest)
+        Alamofire
+            .request(Router.Users.URLRequest)
             .debugLog()
             .validate()
             .responseJSON { response in
                 response.debugLog()
                 
-                resultHandler(response.result
-                    .mapError { NetworkError.Alamofire($0) }
-                    .map { $0 as? [UnboxableDictionary] ?? [] }            
-                    .tryMap { try Unbox($0) as [User] })
-        } 
-        
-//        Alamofire
-//            .request(Router.Users.URLRequest)
-//            .validate()
-//            .responseArray { (result: Result<[User], NetworkError>) in
-//                resultHandler(result)
-//        }
+                resultHandler(response.result // Result<AnyObject, NSError>
+                    .mapError { NetworkError.Alamofire($0) } // Result<AnyObject, NetworkError>
+                    .map { $0 as? [UnboxableDictionary] ?? [] } // Result<[UnboxableDictionary], NetworkError>         
+                    .tryMap { try Unbox($0) as [User] }) // Result<[User], NetworkError> 
+        }
     }
     
 }

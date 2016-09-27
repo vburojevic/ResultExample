@@ -45,22 +45,24 @@ extension Request {
     }
     
     func responseArray<T: Unboxable>(queue queue: dispatch_queue_t? = nil, keyPath: String? = nil, options: NSJSONReadingOptions = .AllowFragments, completionHandler: Result<[T], NetworkError> -> Void) -> Self {
-        return debugLog().responseJSON(completionHandler: { (response: Response<AnyObject, NSError>) in
-            response.debugLog()
+        return debugLog()
+                .validate()
+                .responseJSON(completionHandler: { (response: Response<AnyObject, NSError>) in
+                    response.debugLog()
             
-            let result = response.result
-                .mapError { NetworkError.Alamofire($0) }
-                .flatMap({ anyObject -> Result<[UnboxableDictionary], NetworkError> in
-                    guard let array = anyObject as? [UnboxableDictionary] else {
-                        return .Failure(NetworkError.General)
-                    }
+                    let result = response.result
+                        .mapError { NetworkError.Alamofire($0) }
+                        .flatMap({ anyObject -> Result<[UnboxableDictionary], NetworkError> in
+                            guard let array = anyObject as? [UnboxableDictionary] else {
+                                return .Failure(NetworkError.General)
+                            }
                     
-                    return .Success(array)
-                })
-                .tryMap { try Unbox($0) as [T] }
+                            return .Success(array)
+                        })
+                        .tryMap { try Unbox($0) as [T] }
             
-            completionHandler(result)
-        })
+                    completionHandler(result)
+                })
     }
 }
 

@@ -10,12 +10,14 @@
 
 import Alamofire
 import Unbox
+import Result
+import enum Result.Result
 
 final class WithoutResultUserListInteractor: NSObject, UserListInteractorInterface {
     
     // MARK: - Public functions -
     
-    func loadUsers(withSuccess success: ([User]) -> (), failure: (NetworkError) -> ()) {
+    func loadUsers(withSuccess success: ([User]) -> (), failure: (NetworkError) -> ()) {        
         Alamofire
             .request(Router.Users.URLRequest)
             .debugLog()

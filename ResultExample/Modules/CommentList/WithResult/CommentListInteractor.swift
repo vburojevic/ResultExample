@@ -20,9 +20,15 @@ final class CommentListInteractor: NSObject, CommentListInteractorInterface {
     func loadUsers(withResultHandler resultHandler: (Result<[Comment], NetworkError>) -> ()) {
         Alamofire
             .request(Router.Comments.URLRequest)
+            .debugLog()
             .validate()
-            .responseArray { (result: Result<[Comment], NetworkError>) in
-                resultHandler(result)
+            .responseJSON { response in
+                response.debugLog()
+                
+                resultHandler(response.result
+                    .mapError { NetworkError.Alamofire($0) }
+                    .map { $0 as? [UnboxableDictionary] ?? [] }            
+                    .tryMap { try Unbox($0) as [Comment] })
         }
     }
     

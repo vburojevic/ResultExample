@@ -43,14 +43,18 @@ extension CommentListPresenter: CommentListViewDelegateInterface {
         _interactor.loadUsers { [weak self] (result: Result<[Comment], NetworkError>) in
             let transformedResult = result.map { $0.map { CommentCellItem(comment: $0) } }
             
-            switch transformedResult {
-            case .Success(let commentCellItems):
-                self?._items.appendContentsOf(commentCellItems)
-                self?._view?.reloadData()
-                self?._view?.hideLoading()
-            case .Failure(let networkError):
-                self?._view?.hideWithError(message: networkError.message)
-            }
+//            switch transformedResult {
+//            case .Success(let commentCellItems):
+//                self?._items.appendContentsOf(commentCellItems)
+//                self?._view?.reloadData()
+//                self?._view?.hideLoading()
+//            case .Failure(let networkError):
+//                self?._view?.hideWithError(message: networkError.message)
+//            }
+            
+            self?._items.appendContentsOf(transformedResult ?? [])
+            self?._view?.reloadData()
+            self?._view?.hideLoading()
         }
     }
     
