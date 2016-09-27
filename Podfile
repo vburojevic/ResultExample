@@ -7,5 +7,6 @@ target 'ResultExample' do
 	pod 'Alamofire', '~> 3.0'
 	pod 'Result', '~> 2.0'
 	pod 'MBProgressHUD', '~> 1.0.0'
+	pod 'SwiftyBeaver', '~> 0.7.0'
 
 end

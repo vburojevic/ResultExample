@@ -40,6 +40,13 @@
 		FE7D63A01D997DFF00D020E2 /* WithResultUserListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7D639D1D997DFF00D020E2 /* WithResultUserListPresenter.swift */; };
 		FE7D63A11D997DFF00D020E2 /* WithResultUserListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7D639E1D997DFF00D020E2 /* WithResultUserListWireframe.swift */; };
 		FE7D63A91D99AE8800D020E2 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7D63A81D99AE8800D020E2 /* NetworkError.swift */; };
+		FE7D63B51D9A7D9800D020E2 /* CommentListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7D63B01D9A7D9800D020E2 /* CommentListInteractor.swift */; };
+		FE7D63B61D9A7D9800D020E2 /* CommentListInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7D63B11D9A7D9800D020E2 /* CommentListInterfaces.swift */; };
+		FE7D63B71D9A7D9800D020E2 /* CommentListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7D63B21D9A7D9800D020E2 /* CommentListPresenter.swift */; };
+		FE7D63B81D9A7D9800D020E2 /* CommentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7D63B31D9A7D9800D020E2 /* CommentListViewController.swift */; };
+		FE7D63B91D9A7D9800D020E2 /* CommentListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7D63B41D9A7D9800D020E2 /* CommentListWireframe.swift */; };
+		FE7D63BB1D9A823B00D020E2 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7D63BA1D9A823B00D020E2 /* Comment.swift */; };
+		FE7D63BE1D9A83F200D020E2 /* CommentCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7D63BD1D9A83F200D020E2 /* CommentCellItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +97,13 @@
 		FE7D639D1D997DFF00D020E2 /* WithResultUserListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithResultUserListPresenter.swift; sourceTree = "<group>"; };
 		FE7D639E1D997DFF00D020E2 /* WithResultUserListWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithResultUserListWireframe.swift; sourceTree = "<group>"; };
 		FE7D63A81D99AE8800D020E2 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		FE7D63B01D9A7D9800D020E2 /* CommentListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListInteractor.swift; sourceTree = "<group>"; };
+		FE7D63B11D9A7D9800D020E2 /* CommentListInterfaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListInterfaces.swift; sourceTree = "<group>"; };
+		FE7D63B21D9A7D9800D020E2 /* CommentListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListPresenter.swift; sourceTree = "<group>"; };
+		FE7D63B31D9A7D9800D020E2 /* CommentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListViewController.swift; sourceTree = "<group>"; };
+		FE7D63B41D9A7D9800D020E2 /* CommentListWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListWireframe.swift; sourceTree = "<group>"; };
+		FE7D63BA1D9A823B00D020E2 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		FE7D63BD1D9A83F200D020E2 /* CommentCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCellItem.swift; sourceTree = "<group>"; };
 		FF22B52D37C7E8EEFD1E1293 /* UnitTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		FFF04D16288C9B914442C230 /* InteractorInterface.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InteractorInterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +186,7 @@
 			children = (
 				FE7D63631D996B7300D020E2 /* Main */,
 				FE7D63781D996C9700D020E2 /* UserList */,
+				FE7D63AE1D9A7D8100D020E2 /* CommentList */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -314,6 +329,7 @@
 				FE7D63861D996D7E00D020E2 /* Address.swift */,
 				FE7D63871D996D7E00D020E2 /* Geolocation.swift */,
 				FE7D63881D996D7E00D020E2 /* Company.swift */,
+				FE7D63BA1D9A823B00D020E2 /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -408,6 +424,35 @@
 				FE7D63A81D99AE8800D020E2 /* NetworkError.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		FE7D63AE1D9A7D8100D020E2 /* CommentList */ = {
+			isa = PBXGroup;
+			children = (
+				FE7D63AF1D9A7D8100D020E2 /* WithResult */,
+			);
+			path = CommentList;
+			sourceTree = "<group>";
+		};
+		FE7D63AF1D9A7D8100D020E2 /* WithResult */ = {
+			isa = PBXGroup;
+			children = (
+				FE7D63BC1D9A835000D020E2 /* CellItems */,
+				FE7D63B01D9A7D9800D020E2 /* CommentListInteractor.swift */,
+				FE7D63B11D9A7D9800D020E2 /* CommentListInterfaces.swift */,
+				FE7D63B21D9A7D9800D020E2 /* CommentListPresenter.swift */,
+				FE7D63B31D9A7D9800D020E2 /* CommentListViewController.swift */,
+				FE7D63B41D9A7D9800D020E2 /* CommentListWireframe.swift */,
+			);
+			path = WithResult;
+			sourceTree = "<group>";
+		};
+		FE7D63BC1D9A835000D020E2 /* CellItems */ = {
+			isa = PBXGroup;
+			children = (
+				FE7D63BD1D9A83F200D020E2 /* CommentCellItem.swift */,
+			);
+			path = CellItems;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -569,14 +614,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2A4D7FEA15D340E7829295B /* AppDelegate.swift in Sources */,
+				FE7D63B61D9A7D9800D020E2 /* CommentListInterfaces.swift in Sources */,
 				FE7D63A91D99AE8800D020E2 /* NetworkError.swift in Sources */,
 				FE7D639B1D99781400D020E2 /* WithoutResultUserListWireframe.swift in Sources */,
 				FE7D63831D996CAC00D020E2 /* UserListViewController.swift in Sources */,
+				FE7D63BB1D9A823B00D020E2 /* Comment.swift in Sources */,
 				FE7D638F1D996E1600D020E2 /* UserCellItem.swift in Sources */,
 				FE7D636E1D996B8800D020E2 /* MainViewController.swift in Sources */,
 				1BDCF1F4E9C3CACF9DD6A2E1 /* Constants.swift in Sources */,
+				FE7D63B81D9A7D9800D020E2 /* CommentListViewController.swift in Sources */,
 				FE7D638A1D996D7E00D020E2 /* Address.swift in Sources */,
 				FE7D63911D996F0B00D020E2 /* AlamofireExtensions.swift in Sources */,
+				FE7D63BE1D9A83F200D020E2 /* CommentCellItem.swift in Sources */,
+				FE7D63B71D9A7D9800D020E2 /* CommentListPresenter.swift in Sources */,
 				E4D610C55DFFAB6D1C12E828 /* Progressable.swift in Sources */,
 				5297F913B2123D0D134C6283 /* ViewInterface.swift in Sources */,
 				FE7D63811D996CAC00D020E2 /* UserListInterfaces.swift in Sources */,
@@ -588,6 +638,7 @@
 				FE7D636D1D996B8800D020E2 /* MainPresenter.swift in Sources */,
 				90C254692ECAE22E5279EFB0 /* InteractorInterface.swift in Sources */,
 				FE7D63A01D997DFF00D020E2 /* WithResultUserListPresenter.swift in Sources */,
+				FE7D63B51D9A7D9800D020E2 /* CommentListInteractor.swift in Sources */,
 				FE7D63931D99728F00D020E2 /* Router.swift in Sources */,
 				EB70A02B3AE57EB2DE81766C /* WireframeInterface.swift in Sources */,
 				FE7D636F1D996B8800D020E2 /* MainWireframe.swift in Sources */,
@@ -596,6 +647,7 @@
 				FE7D63891D996D7E00D020E2 /* User.swift in Sources */,
 				FE7D638B1D996D7E00D020E2 /* Geolocation.swift in Sources */,
 				FE7D636C1D996B8800D020E2 /* MainInterfaces.swift in Sources */,
+				FE7D63B91D9A7D9800D020E2 /* CommentListWireframe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

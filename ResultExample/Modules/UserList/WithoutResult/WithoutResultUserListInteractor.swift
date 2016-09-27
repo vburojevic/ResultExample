@@ -16,23 +16,29 @@ final class WithoutResultUserListInteractor: NSObject, UserListInteractorInterfa
     // MARK: - Public functions -
     
     func loadUsers(withSuccess success: ([User]) -> (), failure: (NetworkError) -> ()) {
-        Alamofire.request(Router.Users.URLRequest).validate().responseJSON { response in
-            switch response.result {
-            case .Success:
-                guard let dictionaries = response.result.value as? [UnboxableDictionary] else {
-                    return success([])
-                }
+        Alamofire
+            .request(Router.Users.URLRequest)
+            .debugLog()
+            .validate()
+            .responseJSON { response in
+                response.debugLog()
                 
-                do {
-                    let users: [User] = try Unbox(dictionaries)
-                    success(users)
-                } catch {
-                    failure(NetworkError.Unbox(error as! UnboxError))
+                switch response.result {
+                case .Success:
+                    guard let dictionaries = response.result.value as? [UnboxableDictionary] else {
+                        return success([])
+                    }
+                
+                    do {
+                        let users: [User] = try Unbox(dictionaries)
+                        success(users)
+                    } catch {
+                        failure(NetworkError.Unbox(error as! UnboxError))
+                    }
+                case .Failure(let error):
+                    failure(NetworkError.Alamofire(error))
                 }
-            case .Failure(let error):
-                failure(NetworkError.Alamofire(error))
             }
-        }
     }
         
 }

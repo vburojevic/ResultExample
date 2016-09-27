@@ -11,6 +11,7 @@
 private enum RowIdentifier: Int {
     case WithoutResult
     case WithResult
+    case Comments
 }
 
 import UIKit
@@ -52,6 +53,8 @@ final class MainViewController: UITableViewController {
             presenter.didSelectNavigationAction(.WithoutResultExample)
         case .WithResult:
             presenter.didSelectNavigationAction(.WithResultExample)
+        case .Comments:
+            presenter.didSelectNavigationAction(.CommentsExample)
         }
     }
 }

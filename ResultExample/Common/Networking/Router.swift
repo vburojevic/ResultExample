@@ -13,10 +13,11 @@ enum Router: URLRequestConvertible {
     static let baseURL = NSURL(string: "https://jsonplaceholder.typicode.com")!
     
     case Users
+    case Comments
     
     private var method: Alamofire.Method {
         switch self {
-        case .Users:
+        case .Users, .Comments:
             return .GET
         }
     }
@@ -25,6 +26,8 @@ enum Router: URLRequestConvertible {
         switch self {
         case .Users:
             return "/users"
+        case .Comments:
+            return "/comments"
         }
     }
     

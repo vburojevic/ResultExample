@@ -13,9 +13,10 @@ import UIKit
 
 // MARK: - Navigation -
 
-enum  MainNavigationAction {
+enum MainNavigationAction {
     case WithoutResultExample
     case WithResultExample
+    case CommentsExample
 }
 
 // MARK: - Main Wireframe Interface -

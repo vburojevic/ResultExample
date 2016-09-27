@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SwiftyBeaver
+
+let log = SwiftyBeaver.self
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,10 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        // Logger
+        
+        let console = ConsoleDestination()
+        log.addDestination(console)
+        
+        // Wireframe
+        
         let wireframe = MainWireframe()
         let rootViewController = wireframe.instantiateAndConfigureModule()
         let navigationController = UINavigationController(rootViewController: rootViewController)
         wireframe.navigationController = navigationController
+        
+        // Window
         
         window = UIWindow()
         window?.rootViewController = navigationController

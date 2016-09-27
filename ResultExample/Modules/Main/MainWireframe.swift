@@ -66,6 +66,10 @@ extension MainWireframe: MainWireframeInterface {
             let wireframe = WithResultUserListWireframe()
             let viewController = wireframe.instantiateAndConfigureModule()
             navigationController?.pushViewController(viewController, animated: true)
+        case .CommentsExample:
+            let wireframe = CommentListWireframe()
+            let viewController = wireframe.instantiateAndConfigureModule()
+            navigationController?.pushViewController(viewController, animated: true)
         }
     }
 

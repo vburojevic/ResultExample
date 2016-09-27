@@ -12,36 +12,42 @@ import Result
 import enum Result.Result
 
 extension Request {
+    
     public func debugLog() -> Self {
-        #if DEBUG
             let logString = "===== 🚀 REQUEST 🚀 =====" + "\n" + debugDescription
             log.verbose(logString)
-        #endif
         return self
     }
+    
 }
 
 extension Request {
     
     func responseObject<T: Unboxable>(queue queue: dispatch_queue_t? = nil, keyPath: String? = nil, options: NSJSONReadingOptions = .AllowFragments, completionHandler: Result<T, NetworkError> -> Void) -> Self {
-        return responseJSON(completionHandler: { (response: Response<AnyObject, NSError>) in
-            let result = response.result
-                .mapError { NetworkError.Alamofire($0) }
-                .flatMap({ anyObject -> Result<UnboxableDictionary, NetworkError> in
-                    guard let dictionary = anyObject as? UnboxableDictionary else {
-                        return .Failure(NetworkError.General)
-                    }
+        return debugLog()
+                .responseJSON(completionHandler: { (response: Response<AnyObject, NSError>) in
+                    response.debugLog()
                     
-                    return .Success(dictionary)
+                    let result = response
+                        .result
+                        .mapError { NetworkError.Alamofire($0) }
+                        .flatMap({ anyObject -> Result<UnboxableDictionary, NetworkError> in
+                            guard let dictionary = anyObject as? UnboxableDictionary else {
+                                return .Failure(NetworkError.General)
+                            }
+                            
+                            return .Success(dictionary)
+                        })
+                        .tryMap { try Unbox($0) as T }
+                    
+                    completionHandler(result)
                 })
-                .tryMap { try Unbox($0) as T }
-            
-            completionHandler(result)
-        })
     }
     
     func responseArray<T: Unboxable>(queue queue: dispatch_queue_t? = nil, keyPath: String? = nil, options: NSJSONReadingOptions = .AllowFragments, completionHandler: Result<[T], NetworkError> -> Void) -> Self {
-        return responseJSON(completionHandler: { (response: Response<AnyObject, NSError>) in            
+        return debugLog().responseJSON(completionHandler: { (response: Response<AnyObject, NSError>) in
+            response.debugLog()
+            
             let result = response.result
                 .mapError { NetworkError.Alamofire($0) }
                 .flatMap({ anyObject -> Result<[UnboxableDictionary], NetworkError> in
@@ -60,8 +66,6 @@ extension Request {
 
 extension Response {
     public func debugLog() {
-        #if DEBUG
-            
             var logString = "===== ✨ RESPONSE ✨ =====" + "\n\n"
             
             guard let data = data, jsonString = String(data: data, encoding: NSUTF8StringEncoding) else {
@@ -82,7 +86,6 @@ extension Response {
                 logString += "🔴 ERROR: " + "\n" + "\(error)" + "\n\n"
                 log.error(logString)
             }
-        #endif
     }
 }
 
